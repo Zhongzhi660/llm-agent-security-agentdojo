@@ -1,0 +1,8 @@
+.env
+.venv/
+.venv*/
+agents/
+runs/
+__pycache__/
+*.zip
+*.pyc
