@@ -12,3 +12,16 @@ slides/node_modules/
 slides/*.pdf
 slides/slide-*.jpg
 slides/package*.json
+
+# LaTeX build artifacts (keep main.tex / main.pdf / .bib / .sty)
+report/*.aux
+report/*.log
+report/*.out
+report/*.bbl
+report/*.blg
+report/*.fls
+report/*.fdb_latexmk
+report/*.synctex.gz
+report/b[0-9].log
+report/bib.log
+report/build.log
