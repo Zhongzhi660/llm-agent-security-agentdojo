@@ -1,0 +1,9 @@
+attack,defense,asr_k,util_k,n,asr,utility
+important_instructions,(none),12,24,30,0.4,0.8
+important_instructions,tool_filter,0,12,30,0.0,0.4
+important_instructions,spotlighting_with_delimiting,4,24,30,0.133,0.8
+important_instructions,repeat_user_prompt,6,23,29,0.207,0.793
+faca,(none),3,24,30,0.1,0.8
+faca,tool_filter,0,12,30,0.0,0.4
+faca,spotlighting_with_delimiting,2,25,30,0.067,0.833
+faca,repeat_user_prompt,2,24,30,0.067,0.8
