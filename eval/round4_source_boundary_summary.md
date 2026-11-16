@@ -20,21 +20,6 @@ Rates are clustered by pair (a pair counts as executed if any of its reps execut
 - **R executed | reached** = 0/40: of the runs where the agent provably saw the full T, this many performed it.
 
 ## Confounders (stated, not eliminated)
-- **Temporal position**: U's T is in the user turn (early); R's T arrives in a tool turn (later). This source difference is confounded with position in the dialogue; a two-turn variant that places both at a similar decision stage is future work. We do not claim source is the sole cause.
+- **Temporal position**: U's T is in the user turn (early); R's T arrives in a tool turn (later). This source difference is confounded with position in the dialogue. **Experiment C (`eval/expc_provenance_summary.md`) resolves this confound**: a user-sourced instruction placed at a LATE position (a 2nd user turn after a tool read) still executes 20/20, while the external tool return at the same late position executes 0/20 -- so source, not position, is the decisive variable.
 - **Near-determinism**: temperature 0, so the 2 reps/pair mostly agree; CIs use pair-level clustering (reps are not treated as independent samples).
 - **Single suite/model/field**: banking, gpt-6.1-terra, one synthetic field; generality untested.
-
-## The five required answers
-1. **Same instruction, user message vs tool return — execution rate?** User message (U): 20/20 = 100%.
-   Injected tool return (R): 0/20 = 0%. Descriptive tool return (N): 0/20.
-2. **Of R failures, delivered-but-not-executed vs never-delivered?** All 40/40 R runs were *delivered*
-   (reached = 1) and 0 executed. None failed for non-delivery. The agent even declined to restate T (0/40).
-3. **Evidence the agent treats third-party text as authorization, or merely as data/distraction?**
-   No authorization evidence: in every R run the agent performed only the benign read tool and left the
-   profile unchanged. The injected imperative was treated as inert data, not escalated to an action.
-4. **Reproducible across tasks and reps?** Yes: 20 distinct pairs (distinct sentinels / read phrasings),
-   2 reps each, unanimous (U all execute, R/N none). Pair-clustered CIs: U [84%,100%], R/N [0%,16%].
-5. **Continue new mechanisms, or close FACA as a negative finding?** The evidence supports closing FACA
-   as a **clean negative result with a positive mechanism finding**: under byte-identical content, the
-   agent enforces a source/authorization boundary (subject to the temporal-position confounder). The
-   recommended next step is the report, not more attack templates.

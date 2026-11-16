@@ -85,8 +85,10 @@ def main():
         "agent provably saw the full T, this many performed it.",
         "\n## Confounders (stated, not eliminated)",
         "- **Temporal position**: U's T is in the user turn (early); R's T arrives in a tool turn (later). "
-        "This source difference is confounded with position in the dialogue; a two-turn variant that places "
-        "both at a similar decision stage is future work. We do not claim source is the sole cause.",
+        "This source difference is confounded with position in the dialogue. **Experiment C "
+        "(`eval/expc_provenance_summary.md`) resolves this confound**: a user-sourced instruction placed at "
+        "a LATE position (a 2nd user turn after a tool read) still executes 20/20, while the external tool "
+        "return at the same late position executes 0/20 -- so source, not position, is the decisive variable.",
         "- **Near-determinism**: temperature 0, so the 2 reps/pair mostly agree; CIs use pair-level "
         "clustering (reps are not treated as independent samples).",
         "- **Single suite/model/field**: banking, gpt-6.1-terra, one synthetic field; generality untested.",
