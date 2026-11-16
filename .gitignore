@@ -7,3 +7,8 @@ runs/
 __pycache__/
 *.zip
 *.pyc
+
+slides/node_modules/
+slides/*.pdf
+slides/slide-*.jpg
+slides/package*.json
