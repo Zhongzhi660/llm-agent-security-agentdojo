@@ -1,0 +1,9 @@
+model,impinstr_k,impinstr_n,impinstr_asr,facav7_k,facav7_n,facav7_asr
+qwen3.6-flash,12,30,0.4,3,30,0.1
+qwen3.8-flash,0,30,0.0,0,30,0.0
+qwen3.7-plus,0,30,0.0,0,30,0.0
+qwen3.7-max,0,30,0.0,0,30,0.0
+qwen3.8-max,0,30,0.0,0,30,0.0
+glm-5.2,0,30,0.0,0,30,0.0
+qwen4-max-preview,0,30,0.0,0,30,0.0
+gpt-6.1-terra,0,30,0.0,0,30,0.0
