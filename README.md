@@ -19,8 +19,11 @@ No real accounts, money, or user data are involved. Models are reached through a
    identical text from an untrusted tool return never executes (0/90). A byte-identical **source test**
    (U/R/N) and a **provenance-vs-position** experiment isolate the decisive variable: the **structural
    source** of the instruction, not its content, framing, or dialogue position.
-4. **Scale threshold.** Across 8 models, only Qwen3.6-flash is breakable (40% / 10%); the other 7 sit at
-   0% with the payload delivered — a threshold, not a gradient.
+4. **Scale threshold.** Across 8 models, only Qwen3.6-flash is breakable; the other 7 sit at 0% with the
+   payload delivered — a threshold, not a gradient. On that one breakable model our attack is the
+   **strongest in the panel**: FACA v9 = **70%** ASR vs the strongest published baseline
+   (`important_instructions`) at 53%, same 30 pairs, higher benign utility — because FACA forges
+   account-owner provenance, the exact lever the diagnosis identified (`eval/round5_faca_vs_baselines.md`).
 5. **Defenses re-supply the boundary.** On the vulnerable model, `spotlighting_with_delimiting` (mark tool
    output as untrusted data) drops ASR with utility preserved — the same boundary, supplied externally.
 

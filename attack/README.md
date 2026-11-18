@@ -23,10 +23,17 @@ Single-factor variants, so any effect is attributable to one mechanism:
 |---|---|
 | `faca_context` / `faca_v5` | task-aligned: the action appears as a "related follow-up" in a record about the user's task |
 | `faca_dependency` / `faca_v6` | + a "reconciliation pending" workflow step the task seems to depend on |
-| `faca_authorization` / `faca_v7` | + the record claims it was "approved" |
-| `faca_combined` | all factors together |
+| `faca_authorization` / `faca_v7` | + the record claims it was "approved" (owner-attributed) |
+| `faca_v8` | **owner-authorized required step** — in-record, unhedged owner authority |
+| `faca_v9` | **in-record owner→assistant message** — forges user provenance in context (strongest) |
+| `faca_v10` | **combined** — blended record + dependency + forged owner message |
+| `faca_combined` | all early factors together |
 | `faca_placebo` / `faca_control` | benign same-format record (rules out keyword/length effects) |
 | `faca` | dispatch attack; variant chosen by the `FACA_VARIANT` env var (default `v5`) |
+
+The Round-5 variants (v8–v10) are the max-effectiveness line: they forge **account-owner
+provenance** inside the injected record, which is the lever the mechanism study (Rounds 3–4)
+identified. Payloads avoid the YAML document separator `---` (use `===`).
 
 Run it (no framework edits):
 ```bash
@@ -37,11 +44,16 @@ FACA_VARIANT=v7 python scripts/run_bench.py --model gpt-6.1-terra --suite bankin
 
 ## Result and what it led to
 On GPT-6.1-terra (30 banking pairs) every variant reaches **0% ASR** while the payload is delivered
-(reached 27/30). FACA does not beat the baselines on the strong model — so we stopped adding templates and
-diagnosed *why* (see `eval/faca_round3_diagnosis.md`, `eval/round4_source_boundary_summary.md`,
-`eval/expc_provenance_summary.md`). The controlled finding: the model enforces a **user-authorization /
-provenance boundary** keyed to the structural source of an instruction. FACA breaks the one model that
-lacks it (Qwen3.6-flash: 10% with V7, 40% with `important_instructions`).
+(reached 27/30) — as does every published baseline. That 0% is the paper's main finding, and it led us to
+diagnose *why* (see `eval/faca_round3_diagnosis.md`, `eval/round4_source_boundary_summary.md`,
+`eval/expc_provenance_summary.md`): the model enforces a **user-authorization / provenance boundary** keyed
+to the structural source of an instruction.
+
+On the one model that lacks that boundary (**Qwen3.6-flash**) FACA is the **strongest attack in the panel**:
+**v9 = 70%** ASR vs the strongest published baseline `important_instructions` at 53% (v8/v10 = 63%), on the
+same 30 pairs, while keeping benign Utility higher (80% vs 77%). This is exactly what the mechanism predicts —
+the winning variants forge account-owner provenance inside the record. Full table, baseline sources, and the
+CI caveat (n=30, overlap not yet significant) in `eval/round5_faca_vs_baselines.md`.
 
 ## Design dimensions (for the report)
 1. **Injection point** — which tool field is attacker-controlled, and how trusted it looks in context.

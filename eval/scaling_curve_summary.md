@@ -1,5 +1,9 @@
 # Model comparison — indirect-injection robustness across 8 models
 
+> **Note (Round 5):** the FACA-V7 column (Qwen3.6-flash = 10%) used the *hedged* FACA.
+> With the hedge removed, FACA v8–v10 reach 63–70% on Qwen3.6-flash (vs `important_instructions`
+> 53%). The 0% on all other models is unchanged. See `eval/round5_faca_vs_baselines.md`.
+
 Same AgentDojo banking suite, same 30 user×injection pairs, same attack code.
 ASR = AgentDojo security verdict (95% Wilson CIs in eval/scaling_curve.csv).
 

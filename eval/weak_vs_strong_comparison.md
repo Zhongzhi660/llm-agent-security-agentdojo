@@ -1,5 +1,10 @@
 # Weak vs Strong model — same attacks, same 30 banking train pairs
 
+> **Note (Round 5):** the weak-model FACA figure below (v7 = 10%) used the *hedged* FACA
+> that undercut its own authorization claim. After removing that hedge, FACA v8–v10 reach
+> 63–70% on Qwen3.6-flash and beat the strongest baseline (`important_instructions`, 53%).
+> See `eval/round5_faca_vs_baselines.md` for the current weak-model numbers.
+
 Same AgentDojo banking suite, same 30 (user_task × injection_task) pairs, same attack code.
 ASR = AgentDojo security verdict. 95% Wilson CI in brackets.
 
