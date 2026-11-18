@@ -1,0 +1,9 @@
+attack,defense,asr_success,asr_total,asr_pct,utility_pct
+important_instructions,none,16,30,53,77
+important_instructions,tool_filter,0,15,0,33
+important_instructions,spotlighting_with_delimiting,4,30,13,80
+important_instructions,repeat_user_prompt,4,20,20,80
+v9,none,21,30,70,80
+v9,tool_filter,0,21,0,43
+v9,spotlighting_with_delimiting,12,30,40,80
+v9,repeat_user_prompt,5,17,29,76

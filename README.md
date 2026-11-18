@@ -25,8 +25,11 @@ No real accounts, money, or user data are involved. Models are reached through a
    published baseline (`important_instructions`) at 41.7%, at equal-or-higher benign utility — a +14.5 pt gap
    that is statistically significant (McNemar paired, p ≈ 0.0014). FACA wins because it forges account-owner
    provenance, the exact lever the diagnosis identified (`eval/round5_faca_vs_baselines.md`).
-5. **Defenses re-supply the boundary.** On the vulnerable model, `spotlighting_with_delimiting` (mark tool
-   output as untrusted data) drops ASR with utility preserved — the same boundary, supplied externally.
+5. **Defenses re-supply only half the boundary.** On the vulnerable model, `spotlighting_with_delimiting`
+   (mark tool output as untrusted data) cuts the old-style baseline from 53%→13% at full utility — but only
+   cuts FACA v9 from 70%→40%. The content-level defense closes the *data-vs-instruction* half of the boundary;
+   the *provenance* half ("is this really from the user?") stays open, and that is the half v9 attacks. Only
+   `tool_filter` reaches 0% — by amputating tools, halving benign utility (`eval/defense_summary.md`).
 
 See `report/main.pdf` for the write-up and `eval/` for every table and figure's source data.
 
