@@ -49,11 +49,12 @@ diagnose *why* (see `eval/faca_round3_diagnosis.md`, `eval/round4_source_boundar
 `eval/expc_provenance_summary.md`): the model enforces a **user-authorization / provenance boundary** keyed
 to the structural source of an instruction.
 
-On the one model that lacks that boundary (**Qwen3.6-flash**) FACA is the **strongest attack in the panel**:
-**v9 = 70%** ASR vs the strongest published baseline `important_instructions` at 53% (v8/v10 = 63%), on the
-same 30 pairs, while keeping benign Utility higher (80% vs 77%). This is exactly what the mechanism predicts —
-the winning variants forge account-owner provenance inside the record. Full table, baseline sources, and the
-CI caveat (n=30, overlap not yet significant) in `eval/round5_faca_vs_baselines.md`.
+On the one model that lacks that boundary (**Qwen3.6-flash**) FACA is the **strongest attack in the panel**.
+On the full banking suite (144 pairs) **v9 = 56.2%** ASR vs the strongest published baseline
+`important_instructions` at 41.7%, at equal-or-higher benign Utility (80% vs 79%) — a +14.5 pt gap that is
+**statistically significant** (McNemar paired, p ≈ 0.0014). On the 30-pair dev set v8/v9/v10 reach 63–70%.
+This is exactly what the mechanism predicts — the winning variants forge account-owner provenance inside the
+record. Full tables, baseline sources, and significance in `eval/round5_faca_vs_baselines.md`.
 
 ## Design dimensions (for the report)
 1. **Injection point** — which tool field is attacker-controlled, and how trusted it looks in context.

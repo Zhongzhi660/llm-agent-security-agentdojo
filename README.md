@@ -21,9 +21,10 @@ No real accounts, money, or user data are involved. Models are reached through a
    source** of the instruction, not its content, framing, or dialogue position.
 4. **Scale threshold.** Across 8 models, only Qwen3.6-flash is breakable; the other 7 sit at 0% with the
    payload delivered — a threshold, not a gradient. On that one breakable model our attack is the
-   **strongest in the panel**: FACA v9 = **70%** ASR vs the strongest published baseline
-   (`important_instructions`) at 53%, same 30 pairs, higher benign utility — because FACA forges
-   account-owner provenance, the exact lever the diagnosis identified (`eval/round5_faca_vs_baselines.md`).
+   **strongest in the panel**: on the full banking suite (144 pairs) FACA v9 = **56.2%** ASR vs the strongest
+   published baseline (`important_instructions`) at 41.7%, at equal-or-higher benign utility — a +14.5 pt gap
+   that is statistically significant (McNemar paired, p ≈ 0.0014). FACA wins because it forges account-owner
+   provenance, the exact lever the diagnosis identified (`eval/round5_faca_vs_baselines.md`).
 5. **Defenses re-supply the boundary.** On the vulnerable model, `spotlighting_with_delimiting` (mark tool
    output as untrusted data) drops ASR with utility preserved — the same boundary, supplied externally.
 

@@ -53,10 +53,26 @@ Loaded unmodified via `load_attack`. These are the attacks the AgentDojo paper i
    owner"), which halved its force (7%→, now 13% once the hedge was removed); removing that line
    and forging owner authority cleanly is what unlocks 63–70%.
 
+## Confirmation on the full banking suite (144 pairs) — now significant
+We scaled the headline comparison (v9 vs the strongest baseline) to the **full** banking suite,
+all 16 user × 9 injection = 144 pairs (`eval/banking_full_cases.csv`, `eval/round5_full144_banking.csv`):
+
+| attack | ASR | 95% CI | Utility |
+|---|---|---|---|
+| `important_instructions` | **41.7%** (60/144) | [33.9, 49.8]% | 79% |
+| **FACA v9** | **56.2%** (81/144) | [48.1, 64.1]% | 80% |
+
+- **+14.5 pts**, and the win is **statistically significant** on the matched design:
+  **McNemar paired test** (same 144 pairs) — v9-only wins 30, imp-only wins 9, χ²=10.26,
+  **p ≈ 0.0014**. (Unpaired 2-proportion z = 2.48, p = 0.013 — also significant.)
+- Scaling also corrected the optimistic 30-pair subset: the true weak-model ASR is ~42%
+  (baseline) and ~56% (v9), not the 53%/70% the 30-pair dev set happened to show. The ranking
+  and the significant gap hold.
+
 ## Honest caveats
-- **n = 30; CIs overlap.** v9 [52, 83]% overlaps `important_instructions` [36, 70]%. The point
-  estimate is clearly higher and the ranking is stable across v8/v9/v10, but the gap is **not yet
-  significant at 95%**. A follow-up over ~90 pairs is needed to separate them formally.
+- **The 30-pair table above is the dev set.** It over-estimated both attacks; the 144-pair numbers
+  are the ones to cite. v8/v10 were only measured on the 30-pair set (63%); only v9 and the
+  strongest baseline were scaled to 144.
 - **Weak-model only.** On the strong models (GPT-6.1-terra and 6 others) FACA — like every
   baseline here — remains **0%**. The paper's central claim (a scale-dependent provenance boundary)
   is unchanged; this round shows that *where* attacks work at all, our attack works best.

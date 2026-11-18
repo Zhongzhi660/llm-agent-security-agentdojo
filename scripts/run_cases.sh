@@ -5,7 +5,7 @@ set -u
 MODEL=$1; ATTACK=$2; LOGDIR=$3; VARIANT=${4:-}; MODARG=${5:-}; MODVAL=${6:-}
 cd "$(dirname "$0")/.."
 set -a; . ./.env; set +a
-CASES=eval/faca_round2_cases.csv
+CASES=${CASES:-eval/faca_round2_cases.csv}
 run_pair() {
   local ut=$1 it=$2
   FACA_VARIANT="$VARIANT" .venv/bin/python -I scripts/run_bench.py --model "$MODEL" --suite banking \
